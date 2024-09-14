@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Upload from './Pages/Upload'
 import './index.css'
+import BackendFunctions from "./Pages/BackendFunctions.jsx";
 
 function App() {
   useEffect(() => {
@@ -22,6 +23,7 @@ function App() {
   return (
   <>
     <Upload/>
+    <BackendFunctions/>
   </>
     
   )
