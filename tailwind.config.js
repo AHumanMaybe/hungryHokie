@@ -16,7 +16,8 @@ export default {
           acc: 'var(--accent)',
           txt: 'var(--text)',
           cw: '#FFFFFF',
-          dc: 'var(--decoration)'
+          dc: 'var(--decoration)',
+          itb: 'var(--input-textbox)'
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif']
