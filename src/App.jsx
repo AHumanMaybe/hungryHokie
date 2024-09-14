@@ -1,11 +1,16 @@
 import { useEffect } from 'react'
+import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Upload from './Pages/Upload'
+import Log from './Pages/Log'
+import Login from './Pages/Login'
+import Manual from './Pages/Manual'
 import './index.css'
+import Navbar from './Components/Navbar'
 
 function App() {
   useEffect(() => {
 
-    localStorage.setItem("theme", "dark")
+    localStorage.setItem("theme", "light")
 
     // Check if a theme is already set in localStorage
     const savedTheme = localStorage.getItem("theme");
@@ -21,7 +26,15 @@ function App() {
   }, [])
   return (
   <>
-    <Upload/>
+    <BrowserRouter>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Upload/>}/>
+        <Route path="/log" element={<Log/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/manual" element={<Manual/>}/>
+      </Routes>
+    </BrowserRouter>
   </>
     
   )

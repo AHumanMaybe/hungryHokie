@@ -4,16 +4,24 @@
 
 .light {
   --background: #FFFFFF;
+  --off-background: #FAF9F6;
   --primary: #861F41;
+  --primary-varient1: #f0c1d1;
+  --secondary-varient1: #f4c7a4;
   --secondary: #E5751F;
   --accent: #75787b;
   --text: #050315;
+  --decoration: #D4D5D5;
 }
 
 .dark {
   --background: #010104;
+  --off-background: #1e1e1e;
   --primary: #861F41;
+  --primary-varient1: #f0c1d1;
   --secondary: #E5751F;
+  --secondary-varient1: #f4c7a4;
   --accent: #75787b;
   --text: #ebe9fc;
+  --decoration: #D4D5D5;
 }
