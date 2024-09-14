@@ -6,8 +6,10 @@ function Upload(){
                 <div className="flex text-txt">
                     Select an Image to Log.
                 </div>
-                <div className="flex text-txt">
-                    Center text
+                <div className="flex border border-black rounded-lg bg-prim">
+                    <div className="text-white">
+                        Manual
+                    </div>
                 </div>
             </div>
         </>
