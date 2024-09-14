@@ -25,3 +25,16 @@
   --text: #ebe9fc;
   --decoration: #D4D5D5;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #861F41;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #f0c1d1;
+}
