@@ -1,13 +1,11 @@
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { Component } from 'react';
+import axios from "axios";
 
 function Login(){
     const navigate = useNavigate()
-
-    const doLogin = (username, password) => {
-        navigate("/")
-    }
 
     const [username, setUser] = useState(null)
     const [password, setPass] = useState(null)
@@ -21,7 +19,28 @@ function Login(){
     }
 
     const handleLogin = () => {
-        alert('User: ' + username + "\nPass: " + password)
+        axios.post(
+            "http://18.189.31.236:8000/login",
+            {
+                username: username,
+                password: password
+            },
+            {
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json" 
+                },
+            }
+        )
+        .then((res) => {
+            console.log(res);
+            console.log(res.data);
+            localStorage.setItem("username", res.data["username"]);
+            localStorage.setItem("isLoggedIn", res.data["isLoggedIn"]);
+        });
+
+        //alert('User: ' + username + "\nPass: " + password)
+        //navigate("/")
     }
 
     return(
@@ -58,7 +77,6 @@ function Login(){
                     animate={{ y: 0, opacity: 1 }}     // Final position (fall into place)
                     transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.0 }}  // Customize the falling effect
                     whileHover={{ y: -10 }}  // Moves the button up on hover
-                    onClick={() => doLogin()}
                 >
                     Register
                 </motion.div>
