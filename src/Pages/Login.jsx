@@ -38,6 +38,7 @@ function Login(){
             localStorage.setItem("username", res.data["username"]);
             localStorage.setItem("secret_token", res.data["secret_token"])
             localStorage.setItem("isLoggedIn", res.data["isLoggedIn"]);
+            navigate("/profile")
         });
     }
 

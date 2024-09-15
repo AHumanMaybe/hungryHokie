@@ -6,6 +6,7 @@ import Login from './Pages/Login'
 import Manual from './Pages/Manual'
 import './index.css'
 import Navbar from './Components/Navbar'
+import Profile from './Pages/Profile'
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/log" element={<Log/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/manual" element={<Manual/>}/>
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
     </BrowserRouter>
   </>
