@@ -36,6 +36,7 @@ function Login(){
             console.log(res);
             console.log(res.data);
             localStorage.setItem("username", res.data["username"]);
+            localStorage.setItem("secret_token", res.data["secret_token"])
             localStorage.setItem("isLoggedIn", res.data["isLoggedIn"]);
         });
 

@@ -20,6 +20,29 @@ function Upload() {
         if (selectedFile) {
             try {
                 console.log('File selected:', selectedFile.name);
+                
+                // Move the POST request here to ensure the file is available
+                const user = localStorage.getItem('username');
+                const secret = localStorage.getItem('secret_token');
+
+                const formData = new FormData();
+                formData.append('username', user);
+                formData.append("secret_token", secret);
+                const blob = new Blob([selectedFile], { type: 'application/octet-stream' });
+                formData.append("file", blob);
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    body: formData,
+                };
+
+                const response = await fetch("http://18.189.31.236:8000/upload_log", requestOptions);
+                const data = await response.json();
+                console.log('Response:', data);
+
             } catch (err) {
                 console.log('Error:', err);
             }
@@ -27,10 +50,11 @@ function Upload() {
     };
 
     // Trigger file selection when the upload div is clicked
-    const triggerFileInput = () => {
+    const triggerFileInput = (e) => {
         if (fileInputRef.current) {
             fileInputRef.current.click();  // Programmatically open the file input
         }
+        e.preventDefault();
     };
 
     return (
@@ -59,8 +83,8 @@ function Upload() {
                     style={{ display: 'none' }}  // Hide the input visually
                 />
 
-                {/* Manual Button
-                <motion.div
+                {/* Manual Button */}
+                {/* <motion.div
                     className="flex justify-center items-center text-center bg-sec rounded-xl h-8 w-32 font-semibold text-xl text-cw shadow-lg shadow-sec cursor-pointer"
                     initial={{ y: -100, opacity: 0 }}  // Start position (above the screen)
                     animate={{ y: 0, opacity: 1 }}     // Final position (fall into place)

@@ -1,10 +1,10 @@
-function LogObject(){
+function LogObject({ data }){
 
-    const food = 'banana'
-    const calories = '100'
-    const protein= '20'
-    const carb = '20'
-    const fat = '20'
+    const food = data.food
+    const calories = data.kcal
+    const protein= data.prot
+    const carb = data.carbs
+    const fat = data.fat
 
     let servings = 1
 
