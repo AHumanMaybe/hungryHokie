@@ -14,10 +14,13 @@ function Navbar(){
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const username = localStorage.getItem("username")
+
     const navbarItems = [
         {text: "Home", link: "/"},
         {text: "Log", link: "/log"},
-        {text: "Login", link: "/login"},
+        { text: isLoggedIn ? username : "Login", link: isLoggedIn ? "/profile" : "/login" }
     ]
 
     return(
