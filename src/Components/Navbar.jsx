@@ -2,6 +2,7 @@ import NavListItem from "./NavListItem";
 import { useLocation } from "react-router-dom"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import ThemeSelector from "./ThemeSelector";
 
 function Navbar(){
 
@@ -20,8 +21,8 @@ function Navbar(){
     ]
 
     return(
-        <nav className="w-full text-bgl text-3xl font-normal ">
-            <div className="flex items-center justify-between pt-4 px-8 border-b pb-2">
+        <nav className="w-full text-bgl text-3xl font-normal bg-bg text-txt">
+            <div className="flex items-center justify-between pt-4 px-8 border-b border-bg2 pb-2">
                 {/* Waffle Menu Button */}
                 <div className="lg:hidden">
                     <button 
@@ -36,6 +37,9 @@ function Navbar(){
                 {/* Logo or Main Link */}
                 <div className="flex-grow lg:flex-grow-0">
                     <NavListItem text="HungryHokies" link="/" currentPage={currentPage} />
+                </div>
+                <div>
+                    <ThemeSelector/>
                 </div>
 
                 {/* Navbar Items for Large Screens */}

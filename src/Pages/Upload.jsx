@@ -36,7 +36,7 @@ function Upload() {
     return (
         <>
             <div className="flex flex-col w-full h-screen bg-bg justify-center items-center space-y-6">
-                <div className="font-semibold text-6xl">
+                <div className="font-semibold text-6xl text-txt">
                     Select an Image to <span className="bg-gradient-to-r from-prim to-sec text-transparent bg-clip-text">Log.</span>
                 </div>
 
@@ -59,7 +59,7 @@ function Upload() {
                     style={{ display: 'none' }}  // Hide the input visually
                 />
 
-                {/* Manual Button */}
+                {/* Manual Button
                 <motion.div
                     className="flex justify-center items-center text-center bg-sec rounded-xl h-8 w-32 font-semibold text-xl text-cw shadow-lg shadow-sec cursor-pointer"
                     initial={{ y: -100, opacity: 0 }}  // Start position (above the screen)
@@ -69,7 +69,7 @@ function Upload() {
                     onClick={goManual}
                 >
                     manual
-                </motion.div>
+                </motion.div> */}
             </div>
         </>
     );

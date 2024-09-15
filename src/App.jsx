@@ -9,9 +9,6 @@ import Navbar from './Components/Navbar'
 
 function App() {
   useEffect(() => {
-
-    localStorage.setItem("theme", "light")
-
     // Check if a theme is already set in localStorage
     const savedTheme = localStorage.getItem("theme");
 

@@ -32,9 +32,9 @@ function Log(){
 
     return(
     <>
-        <div className="flex flex-row w-full h-screen bg-bg p-4 space-x-4">
+        <div className="flex flex-row w-full h-screen bg-bg p-4 space-x-4 text-txt">
             <div className="flex flex-col h-full w-1/2 space-y-2">
-                <div className="flex flex-row w-full h-2/3 border font-bold hover:shadow">
+                <div className="flex flex-row w-full h-2/3 border border-bg2 font-bold hover:shadow">
                         
                         {metricCards[currentMetric]}
                         
@@ -48,8 +48,8 @@ function Log(){
                     
                 </div>
             </div>
-            <div className="flex flex-col h-full w-1/2 justify-center items-center border-l hover:shadow">
-                <div className="flex w-full justify-center items-center font-semibold text-2xl border-b">Today's Log</div>
+            <div className="flex flex-col h-full w-1/2 justify-center items-center border-l border-bg2 hover:shadow">
+                <div className="flex w-full justify-center items-center font-semibold text-2xl border-b border-bg2">Today's Log</div>
                 <div className="flex flex-col overflow-y-scroll w-full h-5/6 items-center">
                     <LogObject/>
                     <LogObject/>
