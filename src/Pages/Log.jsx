@@ -16,9 +16,11 @@ function Log() {
         fat: 0
     });
 
-    const getLog = () => {
-        const timestamp = Math.floor(Date.now() / 1000);
+    const [currentTimestamp, setCurrentTimestamp] = useState(Math.floor(Date.now() / 1000));
+    const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
 
+    const getLog = (timestamp) => {
+        
         fetch(`http://18.189.31.236:8000/get_log?username=${localStorage.getItem("username")}&secret_token=${localStorage.getItem("secret_token")}&timestamp=${timestamp}`)
             .then(response => response.json())
             .then(data => {
@@ -29,8 +31,8 @@ function Log() {
     };
 
     useEffect(() => {
-        getLog();
-    }, []);  // Fetch log data on component mount
+        getLog(currentTimestamp);
+    }, [currentTimestamp]);  // Fetch log data on component mount
 
     // Function to calculate totals for calories, protein, carbs, and fat
     const calculateTotals = (data) => {
@@ -69,30 +71,45 @@ function Log() {
         <WeightMetric metricNext={metricNext} />
     ];
 
-    const datePrev = () => {
-        // Logic for previous date
+    const handleDatePrev = () => {
+        const newTimestamp = currentTimestamp - 86400;  // Adjust the decrement value to match your needs
+        setCurrentTimestamp(newTimestamp);
+        setIsNextButtonDisabled(false);  // Ensure the "Next" button is enabled when going back
     };
 
-    const dateNext = () => {
-        // Logic for next date
+    const handleDateNext = () => {
+        const newTimestamp = currentTimestamp + 86400;  // Adjust the increment value to match your needs
+        const now = Math.floor(Date.now() / 1000);
+
+        if (newTimestamp > now) {
+            setIsNextButtonDisabled(true);
+        } else {
+            setCurrentTimestamp(newTimestamp);
+        }
+    };
+
+    const formatDate = (timestamp) => {
+        const date = new Date(timestamp * 1000); // Convert timestamp to milliseconds
+        const options = { year: 'numeric', month: 'long', day: '2-digit' };
+        return date.toLocaleDateString('en-US', options); // Customize locale if needed
     };
 
     return (
         <>
             <div className="flex flex-row w-full h-screen bg-bg p-4 space-x-4 text-txt">
-                <div className="flex flex-col h-full w-1/2 space-y-2">
+                <div className="flex flex-col h-full w-1/2 space-y-2 cursor-default">
                     <div className="flex flex-row w-full h-2/3 border border-bg2 font-bold hover:shadow">
                         {metricCards[currentMetric]}
                     </div>
-                    <div className="flex flex-row w-full h-1/3 bg-sec rounded hover:shadow">
-                        <div className="flex w-2/3 items-center justify-center font-bold text-cw text-3xl">September 10, 2024</div>
+                    <div className="flex flex-row w-full h-1/3 bg-sec rounded hover:shadow cursor-default">
+                        <div className="flex w-2/3 items-center justify-center font-bold text-cw text-3xl">{formatDate(currentTimestamp)}</div>
                         <div className="flex flex-col h-full w-1/3 items-center justify-around">
-                            <StandardButton text="< Prev" handleClick={datePrev} />
-                            <StandardButton text="Next >" handleClick={dateNext} />
+                            <StandardButton text="< Prev" handleClick={handleDatePrev} />
+                            <StandardButton text="Next >" handleClick={handleDateNext} disabled={isNextButtonDisabled} />
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col h-full w-1/2 justify-center items-center border-l border-bg2 hover:shadow">
+                <div className="flex flex-col h-full w-1/2 justify-center items-center border border-bg2 hover:shadow cursor-default">
                     <div className="flex w-full justify-center items-center font-semibold text-2xl border-b border-bg2">Today's Log</div>
                     <div className="flex flex-col overflow-y-scroll w-full h-5/6 items-center">
                         {/* Map over logData and access the nested 'data' array for each item */}

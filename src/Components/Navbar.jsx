@@ -20,7 +20,7 @@ function Navbar(){
     const navbarItems = [
         {text: "Home", link: "/"},
         {text: "Log", link: "/log"},
-        { text: isLoggedIn ? username : "Login", link: isLoggedIn ? "/profile" : "/login" }
+        { text: isLoggedIn ? username : "Login", link: isLoggedIn ? "/login" : "/login" }
     ]
 
     return(
