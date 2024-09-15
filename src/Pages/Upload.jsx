@@ -27,10 +27,36 @@ function Upload() {
     };
 
     // Trigger file selection when the upload div is clicked
-    const triggerFileInput = () => {
+    const triggerFileInput = (e) => {
         if (fileInputRef.current) {
             fileInputRef.current.click();  // Programmatically open the file input
         }
+
+        console.log("i here")
+
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('username', "marco");
+        formData.append("secret_token", "56ff1390");
+        const blob = new Blob([file], { type: 'application/octet-stream' });
+        formData.append("file", blob);
+     
+        const requestOptions = {
+           method: "POST",
+           headers: {
+              "Access-Control-Allow-Origin": "*",
+           },
+           body: formData,
+        };
+        fetch(
+           "http://18.189.31.236:8000/upload_log",
+           requestOptions
+        )
+           .then((response) => response.json())
+           .then((data) => {  // Continue with the data...
+           });
+
     };
 
     return (
