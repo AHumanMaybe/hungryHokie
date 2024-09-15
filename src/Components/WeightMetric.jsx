@@ -13,15 +13,15 @@ function WeightMetric({metricNext}){
         <div className="flex flex-col h-full w-1/2 justify-around">
             <div>
                 Current Weight
-                <div>64lbs</div>
+                <div>{localStorage.getItem('currWeight')}lbs</div>
             </div>
             <div>
                 Current Height
-                <div>64ft</div>
+                <div>{localStorage.getItem('height')}in</div>
             </div>
                 <div>
                     Current Age
-                    <div>64</div>
+                    <div>{localStorage.getItem('age')}</div>
                 </div>
             <StandardButton text="Next >" handleClick={metricNext}/>
         </div>

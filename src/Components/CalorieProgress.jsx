@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 function CalorieProgress({ totals }) {
     // Calculate the percentage of calories over the goal
-    const percentage = Math.round((totals.calories / 3000) * 100);
+    const percentage = Math.round((totals.calories / localStorage.getItem('caloric_intake')) * 100);
 
     return (
         <>
@@ -28,7 +28,7 @@ function CalorieProgress({ totals }) {
                 </svg>
 
                 <div className="absolute top-12 start-1/2 transform -translate-x-1/2 text-center">
-                    <span className="text-lg font-bold text-text">{Math.round(totals.calories)}/3000 kcals</span>
+                    <span className="text-lg font-bold text-text">{Math.round(totals.calories)}/{Math.round(localStorage.getItem('caloric_intake'))} kcals</span>
                 </div>
             </div>
         </>
