@@ -12,6 +12,7 @@
   --accent: #75787b;
   --text: #050315;
   --decoration: #D4D5D5;
+  --input-textbox: #D9D9D9;
 }
 
 .dark {
@@ -24,6 +25,7 @@
   --accent: #75787b;
   --text: #ebe9fc;
   --decoration: #D4D5D5;
+  --input-textbox: #D9D9D9;
 }
 .mono {
   --background: #FFFFFF;
@@ -35,6 +37,7 @@
   --accent: #d0afb6;
   --text: #050315;
   --decoration: #D4D5D5;
+  --input-textbox: #D9D9D9;
 }
 .contrast {
   --background: #FFFFFF;
@@ -46,6 +49,7 @@
   --accent: #b2848e;
   --text: #050315;
   --decoration: #D4D5D5;
+  --input-textbox: #D9D9D9;
 }
 
 ::-webkit-scrollbar {

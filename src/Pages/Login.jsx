@@ -39,9 +39,29 @@ function Login(){
             localStorage.setItem("secret_token", res.data["secret_token"])
             localStorage.setItem("isLoggedIn", res.data["isLoggedIn"]);
         });
+    }
 
-        //alert('User: ' + username + "\nPass: " + password)
-        //navigate("/")
+    const handleRegister = () => {
+        axios.post(
+            "http://18.189.31.236:8000/register",
+            {
+                username: username,
+                password: password
+            },
+            {
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json" 
+                },
+            }
+        )
+        .then((res) => {
+            console.log(res);
+            console.log(res.data);
+        })
+        .then(() => {
+            handleLogin()
+        });
     }
 
     return(
@@ -78,6 +98,7 @@ function Login(){
                     animate={{ y: 0, opacity: 1 }}     // Final position (fall into place)
                     transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.0 }}  // Customize the falling effect
                     whileHover={{ y: -10 }}  // Moves the button up on hover
+                    onClick={handleRegister}
                 >
                     Register
                 </motion.div>
